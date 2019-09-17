@@ -36,6 +36,6 @@ for i, data_file in enumerate(args.data):
 
 plt.title('AR Amplifiers gain curve')
 plt.legend(loc='upper left')
-plt.xlabel(args.y_label)
-plt.ylabel(args.x_label)
+plt.ylabel(args.y_label)
+plt.xlabel(args.x_label)
 plt.show()
