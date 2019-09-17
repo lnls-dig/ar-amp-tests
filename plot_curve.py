@@ -10,7 +10,7 @@ parser.add_argument('-y', '--y_label', default= 'Gain [step]', type=str, help='Y
 parser.add_argument('-x', '--x_label', default='Gain [dB]', type=str, help='X Axis label')
 parser.add_argument('-d', '--degree', default=4, type=int, help='Fit polynomial degree')
 parser.add_argument('-f', '--fit', action='store_true', help='Fit polynomial curve to data')
-parser.add_argument('--no_data', action='store_true', help='Hide original data plot (plot only fit)')
+parser.add_argument('--hide_data', action='store_true', help='Hide original data plot (plot only fit)')
 args = parser.parse_args()
 
 def logistic4(x, A, B, C, D):
@@ -23,8 +23,8 @@ for i, data_file in enumerate(args.data):
     reader_list = list(reader)
     step, pot = np.array(reader_list).astype('float').T
     pot = pot + 30.0
-
-    if not args.no_data:
+    
+    if not args.hide_data:
         plt.plot(pot, step, 'o')
 
     if args.fit:
