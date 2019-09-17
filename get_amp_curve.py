@@ -10,7 +10,7 @@ parser.add_argument('-r', '--rf_gen', type=str, default='DIG:RSSMB100A:', help='
 parser.add_argument('-f', '--freq', type=int, default=200000000, help='RF Frequency used for the test')
 parser.add_argument('-a', '--amp', type=str, default='DIG:ARAMP250:', help='RF Amplifier PV prefix')
 parser.add_argument('-t', '--step', type=int, default=8, help='Gain step size')
-parser.add_argument('--sleep', type=double, default=0.5, help='Sleep time between steps')
+parser.add_argument('--sleep', type=float, default=0.5, help='Sleep time between steps')
 args = parser.parse_args()
 
 rfgen_output_enable_pv = args.rf_gen+'GeneralRF-Sel'
