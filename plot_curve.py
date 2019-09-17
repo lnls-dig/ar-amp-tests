@@ -6,8 +6,8 @@ from scipy.optimize import curve_fit
 
 parser = argparse.ArgumentParser()
 parser.add_argument('data', type=str, nargs='+', help='Data to be plotted')
-parser.add_argument('-x', '--x_label', default= 'Gain [step]', type=str, help='X Axis label')
-parser.add_argument('-y', '--y_label', default='Power output [dBm]', type=str, help='Y Axis label')
+parser.add_argument('-y', '--y_label', default= 'Gain [step]', type=str, help='Y Axis label')
+parser.add_argument('-x', '--x_label', default='Gain [dB]', type=str, help='X Axis label')
 parser.add_argument('-f', '--fit', action='store_true', help='Fit polynomial curve to data')
 parser.add_argument('--no_data', action='store_true', help='Hide original data plot (plot only fit)')
 args = parser.parse_args()
