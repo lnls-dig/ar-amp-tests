@@ -33,6 +33,9 @@ for i, data_file in enumerate(args.data):
         t = np.linspace(pot[0],pot[-1], 4096)
         plt.plot(t, p(t), '-', label=data_file)
         #plt.plot(x, logistic4(x, *popt), '-', label=data_file)
+	print('\nFit for {}'.format(data_file))
+	print('\n{}'.format(p))
+	print(p.c)
 
 plt.title('AR Amplifiers gain curve')
 plt.legend(loc='upper left')
