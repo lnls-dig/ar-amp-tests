@@ -51,12 +51,12 @@ caput(amp_output_enable_pv, 1)
 #Sweep gain steps
 power_output = []
 
-for step in range(0, 4096, 8):
+for step in range(0, 4096, args.step):
+    sleep(args.sleep)
     caput(amp_gain_step_pv, step)
     output = caget(fsl_mark1_y_pv)
     power_output.append([step,output])
     print('STEP: '+str(step)+'\tOUTPUT: '+str(output))
-    sleep(args.sleep)
 
 #Disable amp
 caput(amp_gain_step_pv, 0)
