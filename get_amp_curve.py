@@ -28,21 +28,26 @@ fsl_freq_span_pv = args.spectrum+'FreqSpan-SP'
 fsl_ref_lvl_pv = args.spectrum+'RefLvl-SP'
 
 fsl_mark1_y_pv = args.spectrum+'MarkY1-Mon'
+fsl_get_spectrum_pv = args.spectrum+'GetSpectrum-Sel'
 
 #Configure RF Generator
 caput(rfgen_output_enable_pv, 0)
 caput(rfgen_freq_pv, args.freq)
-caput(rfgen_output_level_pv, 0)
+caput(rfgen_output_level_pv, -20)
 
 #Configure RF Amplifier
 caput(amp_gain_step_pv, 0)
+caput(amp_output_enable_pv, 0)
 
 #Configure Spectrum Analyzer
 caput(fsl_mark1_en_pv, 1)
 caput(fsl_mark1_max_auto_pv, 1)
-caput(fsl_center_freq_pv, 500e6)
-caput(fsl_freq_span_pv, 500e6)
-caput(fsl_ref_lvl_pv, 20.0)
+caput(fsl_center_freq_pv, args.freq)
+caput(fsl_freq_span_pv, (args.freq/2))
+caput(fsl_ref_lvl_pv, 0)
+caput(fsl_get_spectrum_pv, 1)
+ 
+raw_input('Equipments configured, press Enter to start test!')
 
 #Enable RF
 caput(rfgen_output_enable_pv, 1)
