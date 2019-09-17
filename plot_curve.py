@@ -22,8 +22,8 @@ for i, data_file in enumerate(args.data):
     reader = csv.reader(open(data_file,'rb'), delimiter=',')
     reader_list = list(reader)
     step, pot = np.array(reader_list).astype('float').T
-    pot = pot + 30.0
-    
+    pot = pot + 50.0
+
     if not args.hide_data:
         plt.plot(pot, step, 'o')
 
