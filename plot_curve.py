@@ -10,6 +10,7 @@ parser.add_argument('-y', '--y_label', default= 'Gain [step]', type=str, help='Y
 parser.add_argument('-x', '--x_label', default='Gain [dB]', type=str, help='X Axis label')
 parser.add_argument('-d', '--degree', default=4, type=int, help='Fit polynomial degree')
 parser.add_argument('-f', '--fit', action='store_true', help='Fit polynomial curve to data')
+parser.add_argument('-i', '--invert', action='store_true', help='Invert axis')
 parser.add_argument('--hide_data', action='store_true', help='Hide original data plot (plot only fit)')
 args = parser.parse_args()
 
@@ -23,6 +24,9 @@ for i, data_file in enumerate(args.data):
     reader_list = list(reader)
     step, pot = np.array(reader_list).astype('float').T
     pot = pot + 50.0
+
+    if args.invert:
+        step, pot = pot, step
 
     if not args.hide_data:
         plt.plot(pot, step, 'o')
@@ -39,6 +43,10 @@ for i, data_file in enumerate(args.data):
 
 plt.title('AR Amplifiers gain curve')
 plt.legend(loc='upper left')
-plt.ylabel(args.y_label)
-plt.xlabel(args.x_label)
+if args.invert:
+    plt.ylabel(args.x_label)
+    plt.xlabel(args.y_label)
+else:
+    plt.ylabel(args.y_label)
+    plt.xlabel(args.x_label)
 plt.show()
